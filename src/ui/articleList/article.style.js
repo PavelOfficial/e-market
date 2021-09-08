@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const style = {};
 
 const listSize = '4rem';
-const paddingSize = '0.5rem';
+const paddingSize = '1rem';
 
 style.Root = styled.li`
   display: flex;
@@ -18,14 +18,16 @@ style.Root = styled.li`
 style.Picture = styled.img`
   width: ${listSize};
   height: ${listSize};
+  object-fit: cover;
 `;
 
 style.Name = styled.div`
-  flex-basis: 15rem;
-  flex-grow: 2;
-  max-height: ${listSize};
-  text-overflow: ellipsis;
   padding: 0 ${paddingSize};
+  flex-grow: 1;
+
+  max-height: 2rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
 
 style.Price = styled.div`
