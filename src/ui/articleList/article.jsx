@@ -26,14 +26,14 @@ const Article = ({ article, count, onChangeCount }) => {
         <style.NumberInput
           type="number"
           value={count}
-          onChange={onChangeCount}
+          onChange={(event) => onChangeCount(+event.target.value)}
         />
       </style.Count>
       <style.Checkmark>
         <style.Checkbox
           type="checkbox"
           checked={!!count}
-          onChange={onChangeCount}
+          onChange={() => (count ? onChangeCount(0) : onChangeCount(1))}
         />
       </style.Checkmark>
     </style.Root>

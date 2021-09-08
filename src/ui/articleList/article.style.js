@@ -43,7 +43,8 @@ style.MultiplySign = styled.div`
 style.Count = styled.div``;
 
 style.NumberInput = styled.input`
-  width: 2rem;
+  font-size: 1.1rem;
+  width: 3rem;
 `;
 
 style.Checkmark = styled.label`
@@ -54,7 +55,10 @@ style.Checkmark = styled.label`
   justify-content: center;
 `;
 
-style.Checkbox = styled.input``;
+style.Checkbox = styled.input`
+  width: 1.5rem;
+  height: 1.5rem;
+`;
 
 export { style };
 
