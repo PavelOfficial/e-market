@@ -26,7 +26,13 @@ const Article = ({ article, count, onChangeCount }) => {
         <style.NumberInput
           type="number"
           value={count}
-          onChange={(event) => onChangeCount(+event.target.value)}
+          onChange={(event) => {
+            const value = +event.target.value;
+
+            if (value >= 0) {
+              onChangeCount(+event.target.value);
+            }
+          }}
         />
       </style.Count>
       <style.Checkmark>
