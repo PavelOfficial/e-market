@@ -6,12 +6,18 @@ export const GlobalLayoutStyle = createGlobalStyle`
     margin: 0;
     font: 14px Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
+    display: flex;
+    justify-content: center;
   }
 
   html,
   body,
   #root {
     height: 100%;
+  }
+  
+  #root {
+    flex-basis: 40rem;
   }
 
 `;
