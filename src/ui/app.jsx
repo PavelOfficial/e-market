@@ -2,8 +2,7 @@ import React from 'react';
 
 import { style } from './app.style';
 import { ArticleList } from './articleList/articleList';
-
-const articles = [];
+import { articles } from '../http/data';
 
 export function App() {
   return (
