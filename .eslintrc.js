@@ -31,7 +31,8 @@ module.exports = {
     'import/no-extraneous-dependencies': ['error', {devDependencies: true}],
     'import/no-cycle': ['off', {maxDepth: '∞'}],
 
-    'react/jsx-no-bind': ['error', {ignoreRefs: true}],
+    'react/jsx-no-bind': ['off', {ignoreRefs: true}],
+    'react/jsx-props-no-spreading': ['off'],
     'react/sort-comp': ['error', {
       order: [
         'propTypes',
@@ -81,7 +82,7 @@ module.exports = {
     'react/forbid-prop-types': 'off',
     'react/destructuring-assignment': 'off',
 
-    'react-hooks/exhaustive-deps': 'error',
+    'react-hooks/exhaustive-deps': 'off',
     'react-hooks/rules-of-hooks': 'error',
 
     'jsx-a11y/anchor-is-valid': ['warn', {aspects: ['invalidHref']}],

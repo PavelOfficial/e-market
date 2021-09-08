@@ -3,39 +3,55 @@ import { PropTypes } from 'prop-types';
 
 import { style } from './article.style';
 
-export const Article = ({ article, count }) => (
-  <style.Root>
-    <style.Picture
-      src={article.pic}
-    />
-
-    <style.Name>
-      {article.name}
-    </style.Name>
-
-    <style.Price>
-      {`${article.price} ${article.currency}`}
-    </style.Price>
-
-    <style.MultiplySign>
-      x
-    </style.MultiplySign>
-
-    <style.Count>
-      {count}
-    </style.Count>
-    <style.Checkmark>
-      <style.Checkbox
-        type="checkbox"
-        checked={!!count}
+const Article = ({ article, count, onChangeCount }) => {
+  const result = (
+    <style.Root>
+      <style.Picture
+        src={article.pic}
       />
-    </style.Checkmark>
-  </style.Root>
-);
+
+      <style.Name>
+        {article.name}
+      </style.Name>
+
+      <style.Price>
+        {`${article.price} ${article.currency}`}
+      </style.Price>
+
+      <style.MultiplySign>
+        x
+      </style.MultiplySign>
+
+      <style.Count>
+        <style.NumberInput
+          type="number"
+          value={count}
+          onChange={onChangeCount}
+        />
+      </style.Count>
+      <style.Checkmark>
+        <style.Checkbox
+          type="checkbox"
+          checked={!!count}
+          onChange={onChangeCount}
+        />
+      </style.Checkmark>
+    </style.Root>
+  );
+
+  return result;
+};
 
 Article.propTypes = {
+  onChangeCount: PropTypes.func.isRequired,
   article: PropTypes.object.isRequired,
-  count: PropTypes.number.isRequired,
+  count: PropTypes.number,
 };
+
+Article.defaultProps = {
+  count: 0,
+};
+
+export { Article };
 
 export default Article;

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const style = {};
+const style = {};
 
 const listSize = '4rem';
 const paddingSize = '1rem';
@@ -32,17 +32,30 @@ style.Name = styled.div`
 
 style.Price = styled.div`
   white-space: nowrap;
+  min-width: 4rem;
 `;
 
 style.MultiplySign = styled.div`
-  padding: 0 ${paddingSize / 2};
+  padding: 0 ${paddingSize};
   white-space: nowrap;
 `;
 
 style.Count = styled.div``;
 
-style.Checkmark = styled.div``;
+style.NumberInput = styled.input`
+  width: 2rem;
+`;
+
+style.Checkmark = styled.label`
+  display: flex;
+  min-width: ${listSize};
+  height: ${listSize};
+  align-items: center;
+  justify-content: center;
+`;
 
 style.Checkbox = styled.input``;
+
+export { style };
 
 export default style;

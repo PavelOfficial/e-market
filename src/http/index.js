@@ -17,42 +17,42 @@ const delay = (timeout) => {
 export const http = {
   get(path, { page, query, isInCart }) {
     if (path === '/articles') {
+      const queryRegExp = new RegExp(query, 'gi');
+      let result = articles.filter((item) => queryRegExp.test(item.name));
+
+      if (isInCart) {
+        result = result.filter((item) => !!cart[item.id]);
+      }
+
+      const pageResult = result.slice((page - 1) * pageSize, page * pageSize);
+      const isLastPage = (pageResult.length === 0 && result.length === 0) ||
+        pageResult[pageResult.length - 1] === result[result.length - 1];
+
       return delay(serverLatency)
-        .then(() => {
-          const queryRegExp = new RegExp(query, 'gi');
-          let result = articles.filter((item) => queryRegExp.test(item.name));
-
-          if (isInCart) {
-            result = result.filter((item) => !!cart[item.id]);
-          }
-
-          result = result.slice((page - 1) * pageSize, page * pageSize);
-
-          return { articles: result };
-        });
+        .then(() => ({
+          articles: pageResult,
+          isLastPage,
+        }));
     }
 
     return Promise.resolve();
   },
   put(path, { id, count }) {
     if (path === '/cart') {
+      cart[id] = count;
+
       return delay(serverLatency)
-        .then(() => {
-          cart[id] = count;
-          return { succeed: true };
-        });
+        .then(() => ({ succeed: true }));
     }
 
     return Promise.resolve();
   },
   delete(path, { id }) {
     if (path === '/cart') {
-      return delay(serverLatency)
-        .then(() => {
-          delete cart[id];
+      delete cart[id];
 
-          return { succeed: true };
-        });
+      return delay(serverLatency)
+        .then(() => ({ succeed: true }));
     }
 
     return Promise.resolve();
