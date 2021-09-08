@@ -3,8 +3,7 @@ import { style } from './app.style';
 
 export function App() {
   return (
-      <style.Root>
-      </style.Root>
+    <style.Root />
   );
 }
 
