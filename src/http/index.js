@@ -39,17 +39,11 @@ export const http = {
   },
   put(path, { id, value }) {
     if (path === '/cart') {
-      cart[id] = value;
-
-      return delay(serverLatency)
-        .then(() => ({ succeed: true }));
-    }
-
-    return Promise.resolve();
-  },
-  delete(path, { id }) {
-    if (path === '/cart') {
-      delete cart[id];
+      if (value) {
+        cart[id] = value;
+      } else {
+        delete cart[id];
+      }
 
       return delay(serverLatency)
         .then(() => ({ succeed: true }));
@@ -64,6 +58,10 @@ export const http = {
     }
 
     if (path === '/buying/create') {
+      Object.keys(cart).forEach((id) => {
+        delete cart[id];
+      });
+
       return delay(serverLatency)
         .then(() => ({
           succeed: true,
