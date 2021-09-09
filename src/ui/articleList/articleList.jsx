@@ -9,7 +9,7 @@ import { ArticleConnect } from './article.connect';
 import {
   LineVisibilitySensor,
   useVisibilityChange,
-} from '../lineVisibilitySensor/lineVisibilitySensor';
+} from '../../components/lineVisibilitySensor/lineVisibilitySensor';
 
 const Content = ({ articles }) => {
   const component = articles.map((item) => (
