@@ -63,6 +63,19 @@ export const http = {
         .then(() => ({ succeed: true }));
     }
 
+    if (path === '/buying/create') {
+      return delay(serverLatency)
+        .then(() => ({
+          succeed: true,
+          order: parseInt(Math.random() * 100000, 10),
+        }));
+    }
+
+    if (path === '/buying/cancel') {
+      return delay(serverLatency)
+        .then(() => ({ succeed: true }));
+    }
+
     return Promise.resolve();
   },
 };

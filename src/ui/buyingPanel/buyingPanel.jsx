@@ -14,7 +14,10 @@ const BuyingPanel = (props) => {
         {`Всего товаров: ${props.count}. На сумму ${props.totalPrice} ${props.currency}`}
       </style.Text>
       <style.ButtonBox>
-        <style.Button type="button" onClick={props.onBuy}>
+        <style.Button
+          type="button"
+          onClick={props.onBuy}
+        >
           Купить
         </style.Button>
       </style.ButtonBox>
