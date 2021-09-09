@@ -3,13 +3,21 @@ import { connect } from 'react-redux';
 import { ArticleList } from './articleList';
 import { ArticlesThunk } from '../redux/articles/articles.thunk';
 
-const mapStateToProps = (state) => ({
-  pending: ArticlesThunk.pending,
-  process: ArticlesThunk.process,
-  isLastPage: state.articles.isLastPage,
-  articles: state.articles.list,
-  cart: state.cart,
-});
+const mapStateToProps = (state) => {
+  const { articles } = state;
+  let articleList = articles.list;
+
+  if (articles.search.isInCart) {
+    articleList = articles.list.filter((item) => state.cart[item.id]);
+  }
+
+  return {
+    pending: ArticlesThunk.pending,
+    process: ArticlesThunk.process,
+    isLastPage: state.articles.isLastPage,
+    articles: articleList,
+  };
+};
 
 const mapDispatchToProps = (dispatch) => ({
 

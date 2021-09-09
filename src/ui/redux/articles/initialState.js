@@ -2,7 +2,7 @@
 export const initialState = {
   search: {
     query: '',
-    isItInChart: false,
+    isInCart: false,
   },
   page: 0,
   isLastPage: false,

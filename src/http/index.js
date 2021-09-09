@@ -37,9 +37,9 @@ export const http = {
 
     return Promise.resolve();
   },
-  put(path, { id, count }) {
+  put(path, { id, value }) {
     if (path === '/cart') {
-      cart[id] = count;
+      cart[id] = value;
 
       return delay(serverLatency)
         .then(() => ({ succeed: true }));

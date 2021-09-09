@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const style = {};
 
 style.Root = styled.ul`
-  padding: 4rem 0 4rem 0;
+  padding: 0 0 4rem 0;
   display: block;
   margin: 0;
 `;

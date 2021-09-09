@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
 import { Article } from './article';
-import { updateCart } from '../redux/cart/updateCart';
+import { UpdateChatThunk } from '../redux/cart/updateChat.thunk';
 
 const mapStateToProps = (state, ownProps) => {
   const count = state.cart[ownProps.article.id];
@@ -13,8 +13,9 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => ({
 
-  onChangeCount(id, count) {
-    dispatch(updateCart.createAction(id, count));
+  onChangeCount(id, value) {
+    const thunk = new UpdateChatThunk(dispatch, id, value);
+    thunk.invoke();
   },
 
 });

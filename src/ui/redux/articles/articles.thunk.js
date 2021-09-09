@@ -9,21 +9,30 @@ export class ArticlesThunk {
 
   static pending = false;
 
-  constructor(dispatch) {
+  constructor(dispatch, invokeOptions = null) {
     this.dispatch = dispatch;
+    this.invokeOptions = invokeOptions;
     this.process = Promise.resolve();
 
     dispatch((_dispatch, getState) => { this.state = getState(); });
   }
 
-  get options() {
+  get storeOptions() {
     const { articles } = this.state;
 
     return {
       page: articles.page + 1,
-      query: articles.query,
-      isInChart: articles.isInChart,
+      query: articles.search.query,
+      isInCart: articles.search.isInCart,
     };
+  }
+
+  get options() {
+    if (this.invokeOptions) {
+      return this.invokeOptions;
+    }
+
+    return this.storeOptions;
   }
 
   async callHttp() {
@@ -32,7 +41,7 @@ export class ArticlesThunk {
         .then(this.checkLastProcess)
         .then(({ articles, isLastPage }) => {
           ArticlesThunk.pending = false;
-          this.dispatch(addArticles.createAction(articles, isLastPage));
+          this.dispatch(addArticles.createAction(articles, isLastPage, this.options));
         });
     } catch (error) {
       // continue

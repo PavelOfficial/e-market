@@ -10,13 +10,9 @@ export class UpdateChatThunk {
   }
 
   async invoke() {
-    this.dispatch(updateCart.createAction(this.id, this.value));
+    http.put('/cart', { id: this.id, value: this.value });
 
-    try {
-      await http.put('/cart');
-    } catch (error) {
-      // continue
-    }
+    this.dispatch(updateCart.createAction(this.id, this.value));
   }
 
 }
