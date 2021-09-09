@@ -56,7 +56,9 @@ const ArticleList = (props) => {
   });
 
   return (
-    <style.Root>
+    <style.Root
+      cartExists={props.cartExists}
+    >
       <Content
         articles={props.articles}
       />
@@ -77,6 +79,7 @@ ArticleList.propTypes = {
   isLastPage: PropTypes.bool.isRequired,
   onLoadPage: PropTypes.func.isRequired,
   process: PropTypes.object.isRequired,
+  cartExists: PropTypes.bool.isRequired,
 };
 
 export { ArticleList };

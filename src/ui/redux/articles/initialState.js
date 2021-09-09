@@ -1,5 +1,6 @@
 
 export const initialState = {
+  store: {},
   search: {
     query: '',
     isInCart: false,

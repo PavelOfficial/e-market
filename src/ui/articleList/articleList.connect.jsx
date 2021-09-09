@@ -16,6 +16,7 @@ const mapStateToProps = (state) => {
     process: ArticlesThunk.process,
     isLastPage: state.articles.isLastPage,
     articles: articleList,
+    cartExists: Object.keys(state.cart).length,
   };
 };
 

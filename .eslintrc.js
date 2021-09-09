@@ -27,6 +27,7 @@ module.exports = {
     'class-methods-use-this': 'off',
     'no-confusing-arrow': ['error', {allowParens: true}],
     'no-param-reassign': 'off',
+    'arrow-parens': 'off',
 
     'import/no-extraneous-dependencies': ['error', {devDependencies: true}],
     'import/no-cycle': ['off', {maxDepth: '∞'}],

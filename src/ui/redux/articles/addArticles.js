@@ -17,6 +17,12 @@ const reducer = (state, action) => {
     ...action.articles,
   ];
 
+  state.store = state.list.reduce((result, item) => {
+    result[item.id] = item;
+
+    return result;
+  }, state.store);
+
   return state;
 };
 
