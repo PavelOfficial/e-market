@@ -1,7 +1,4 @@
-import React, {
-  useState,
-  useEffect,
-} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import { style } from './articleList.style';
@@ -41,18 +38,16 @@ Loader.propTypes = {
 };
 
 const ArticleList = (props) => {
-  const [pending, setPending] = useState(false);
-  const activeSensor = !pending && !props.isLastPage;
-
-  useEffect(() => {
-    setPending(props.pending);
-  }, [props.pending, props.process]);
-
-  const onVisibleChange = useVisibilityChange({
+  const {
+    pending,
     activeSensor,
+    onVisibleChange,
+  } = useVisibilityChange({
     content: props.articles,
-    setPending,
     onLoadPage: props.onLoadPage,
+    isLastPage: props.isLastPage,
+    propsPending: props.pending,
+    process: props.process,
   });
 
   return (

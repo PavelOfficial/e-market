@@ -1,15 +1,27 @@
-import React, { useCallback, useEffect, useRef } from 'react';
+import React, {
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import VisibilitySensor from 'react-visibility-sensor';
 
 import { style } from './lineVisibilitySensor.style';
 
 export const useVisibilityChange = ({
-  activeSensor,
+  isLastPage,
+  propsPending,
+  process,
   content,
-  setPending,
   onLoadPage,
 }) => {
   const visible = useRef(false);
+  const [pending, setPending] = useState(false);
+  const activeSensor = !pending && !isLastPage;
+
+  useEffect(() => {
+    setPending(propsPending);
+  }, [propsPending, process]);
 
   const handleVisibleChange = useCallback(() => {
     if (visible.current && activeSensor) {
@@ -25,7 +37,11 @@ export const useVisibilityChange = ({
     handleVisibleChange();
   };
 
-  return onVisibleChange;
+  return {
+    pending,
+    activeSensor,
+    onVisibleChange,
+  };
 };
 
 export const LineVisibilitySensor = (props) => (
