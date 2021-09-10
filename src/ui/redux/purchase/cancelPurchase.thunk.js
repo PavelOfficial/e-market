@@ -1,7 +1,7 @@
 import { http } from '../../../http';
 import { POPUP_TYPE, popupManager } from '../../popup/popupManager';
 
-class CancelThunk {
+class CancelPurchaseThunk {
 
   constructor(dispatch, order) {
     this.dispatch = dispatch;
@@ -9,7 +9,7 @@ class CancelThunk {
   }
 
   async invoke() {
-    const response = await http.post('/buying/cancel', { order: this.order });
+    const response = await http.post('/purchase/cancel', { order: this.order });
 
     if (response.succeed) {
       popupManager.emitPopup(POPUP_TYPE.ORDER_CANCELED, { order: this.order });
@@ -18,6 +18,6 @@ class CancelThunk {
 
 }
 
-export { CancelThunk };
+export { CancelPurchaseThunk };
 
-export default CancelThunk;
+export default CancelPurchaseThunk;

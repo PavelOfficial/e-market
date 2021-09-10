@@ -5,7 +5,7 @@ import { clearCart } from '../cart/clearCart';
 
 import { POPUP_TYPE, popupManager } from '../../popup/popupManager';
 
-export class BuyingThunk {
+export class CreatePurchaseThunk {
 
   constructor(dispatch) {
     this.dispatch = dispatch;
@@ -14,7 +14,7 @@ export class BuyingThunk {
   }
 
   async invoke() {
-    const response = await http.post('/buying/create', this.cart);
+    const response = await http.post('/purchase/create', this.cart);
 
     if (response.succeed) {
       this.dispatch(clearArticles.createAction());
@@ -26,4 +26,4 @@ export class BuyingThunk {
 
 }
 
-export default BuyingThunk;
+export default CreatePurchaseThunk;

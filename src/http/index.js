@@ -54,7 +54,7 @@ export const http = {
     return Promise.resolve();
   },
   post(path) {
-    if (path === '/buying/create') {
+    if (path === '/purchase/create') {
       Object.keys(cart).forEach((id) => {
         delete cart[id];
       });
@@ -66,7 +66,7 @@ export const http = {
         }));
     }
 
-    if (path === '/buying/cancel') {
+    if (path === '/purchase/cancel') {
       return delay(serverLatency)
         .then(() => ({ succeed: true }));
     }

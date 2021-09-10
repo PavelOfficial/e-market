@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { style } from '../buyingSucceed/buyingSucceed.style';
+import { style } from '../purchaseSucceed/purchaseSucceed.style';
 import { popupManager } from '../popupManager';
 
 function OrderCanceled(props) {

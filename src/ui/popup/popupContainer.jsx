@@ -3,12 +3,12 @@ import React, { useEffect, useState } from 'react';
 import { style } from './popupContainer.style';
 import { popupManager, POPUP_TYPE } from './popupManager';
 
-import { BuyingSucceedConnect } from './buyingSucceed/buyingSucceed.connect';
+import { PurchaseSucceedConnect } from './purchaseSucceed/purchaseSucceed.connect';
 import { OrderCanceled } from './orderCanceled/orderCanceled';
 
 const popupMap = {
   [POPUP_TYPE.ORDER_CANCELED]: OrderCanceled,
-  [POPUP_TYPE.BUYING_SUCCEED]: BuyingSucceedConnect,
+  [POPUP_TYPE.BUYING_SUCCEED]: PurchaseSucceedConnect,
 };
 
 export function PopupContainer() {

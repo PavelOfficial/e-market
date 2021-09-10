@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { style } from './buyngPanel.style';
+import { style } from './purchasePanel.style';
 
-function BuyingPanel(props) {
+function PurchasePanel(props) {
   if (!props.count) {
     return null;
   }
@@ -25,13 +25,13 @@ function BuyingPanel(props) {
   );
 }
 
-BuyingPanel.propTypes = {
+PurchasePanel.propTypes = {
   count: PropTypes.number.isRequired,
   totalPrice: PropTypes.number.isRequired,
   currency: PropTypes.string.isRequired,
   onBuy: PropTypes.func.isRequired,
 };
 
-export { BuyingPanel };
+export { PurchasePanel };
 
-export default BuyingPanel;
+export default PurchasePanel;

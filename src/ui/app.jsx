@@ -3,7 +3,7 @@ import React from 'react';
 import { style } from './app.style';
 import { ArticleListConnect } from './articleList/articleList.connect';
 import { SearchConnect } from './search/search.connect';
-import { BuyingPanelConnect } from './buyingPanel/buyingPanel.connect';
+import { PurchasePanelConnect } from './purchasePanel/purchasePanel.connect';
 import { PopupContainer } from './popup/popupContainer';
 
 export function App() {
@@ -11,7 +11,7 @@ export function App() {
     <style.Root>
       <SearchConnect />
       <ArticleListConnect />
-      <BuyingPanelConnect />
+      <PurchasePanelConnect />
       <PopupContainer />
     </style.Root>
   );

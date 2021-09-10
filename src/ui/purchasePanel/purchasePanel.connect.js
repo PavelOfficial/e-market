@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
-import { BuyingPanel } from './buyingPanel';
-import { BuyingThunk } from '../redux/buying/buying.thunk';
+import { PurchasePanel } from './purchasePanel';
+import { CreatePurchaseThunk } from '../redux/purchase/createPurchase.thunk';
 
 const mapStateToProps = (state) => {
   const articlesStore = state.articles.store;
@@ -24,12 +24,12 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => ({
 
   onBuy() {
-    const thunk = new BuyingThunk(dispatch);
+    const thunk = new CreatePurchaseThunk(dispatch);
     thunk.invoke();
   },
 
 });
 
-export const BuyingPanelConnect = connect(mapStateToProps, mapDispatchToProps)(BuyingPanel);
+export const PurchasePanelConnect = connect(mapStateToProps, mapDispatchToProps)(PurchasePanel);
 
-export default BuyingPanelConnect;
+export default PurchasePanelConnect;

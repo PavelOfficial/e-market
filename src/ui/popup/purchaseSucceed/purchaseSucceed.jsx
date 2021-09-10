@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 
 import { popupManager } from '../popupManager';
 
-import { style } from './buyingSucceed.style';
+import { style } from './purchaseSucceed.style';
 
-function BuyingSucceed(props) {
+function PurchaseSucceed(props) {
   return (
     <style.Root>
       <style.Header>
@@ -35,11 +35,11 @@ function BuyingSucceed(props) {
   );
 }
 
-BuyingSucceed.propTypes = {
+PurchaseSucceed.propTypes = {
   order: PropTypes.number.isRequired,
   onCancel: PropTypes.func.isRequired,
 };
 
-export { BuyingSucceed };
+export { PurchaseSucceed };
 
-export default BuyingSucceed;
+export default PurchaseSucceed;
