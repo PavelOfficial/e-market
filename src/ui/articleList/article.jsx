@@ -3,8 +3,8 @@ import { PropTypes } from 'prop-types';
 
 import { style } from './article.style';
 
-const Article = ({ article, count, onChangeCount }) => {
-  const result = (
+function Article({ article, count, onChangeCount }) {
+  return (
     <style.Root>
       <style.Picture
         src={article.pic}
@@ -44,9 +44,7 @@ const Article = ({ article, count, onChangeCount }) => {
       </style.Checkmark>
     </style.Root>
   );
-
-  return result;
-};
+}
 
 Article.propTypes = {
   onChangeCount: PropTypes.func.isRequired,

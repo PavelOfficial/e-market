@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { style } from './buyngPanel.style';
 
-const BuyingPanel = (props) => {
+function BuyingPanel(props) {
   if (!props.count) {
     return null;
   }
@@ -23,7 +23,7 @@ const BuyingPanel = (props) => {
       </style.ButtonBox>
     </style.Root>
   );
-};
+}
 
 BuyingPanel.propTypes = {
   count: PropTypes.number.isRequired,

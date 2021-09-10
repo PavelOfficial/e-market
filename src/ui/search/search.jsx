@@ -11,7 +11,7 @@ const defaultValues = {
   isInCart: false,
 };
 
-const Search = (props) => {
+const Search = function (props) {
   const query = useRef(null);
   const isInCart = useRef(null);
   const onChange = useDebounceCallback(props.onChange, DEBOUNCE_WAIT);
@@ -43,7 +43,7 @@ const Search = (props) => {
         placeholder="Поиск"
       />
       <style.Checkmark>
-        <style.CheckmarkText>куплено</style.CheckmarkText>
+        <style.CheckmarkText>выбрано</style.CheckmarkText>
         <style.Checkbox
           ref={isInCart}
           type="checkbox"

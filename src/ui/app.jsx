@@ -6,13 +6,15 @@ import { SearchConnect } from './search/search.connect';
 import { BuyingPanelConnect } from './buyingPanel/buyingPanel.connect';
 import { PopupContainer } from './popup/popupContainer';
 
-export const App = () => (
-  <style.Root>
-    <SearchConnect />
-    <ArticleListConnect />
-    <BuyingPanelConnect />
-    <PopupContainer />
-  </style.Root>
-);
+export function App() {
+  return (
+    <style.Root>
+      <SearchConnect />
+      <ArticleListConnect />
+      <BuyingPanelConnect />
+      <PopupContainer />
+    </style.Root>
+  );
+}
 
 export default App;

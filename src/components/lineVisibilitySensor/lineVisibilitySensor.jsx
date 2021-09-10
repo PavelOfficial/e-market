@@ -15,14 +15,13 @@ export const useVisibilityChange = ({
   content,
   onLoadPage,
 }) => {
-  const visible = useRef(false);
   const [pending, setPending] = useState(false);
-  const activeSensor = !pending && !isLastPage;
-
   useEffect(() => {
     setPending(propsPending);
   }, [propsPending, process]);
 
+  const visible = useRef(false);
+  const activeSensor = !pending && !isLastPage;
   const handleVisibleChange = useCallback(() => {
     if (visible.current && activeSensor) {
       onLoadPage();
@@ -44,10 +43,12 @@ export const useVisibilityChange = ({
   };
 };
 
-export const LineVisibilitySensor = (props) => (
-  <VisibilitySensor {...props}>
-    <style.Root />
-  </VisibilitySensor>
-);
+export function LineVisibilitySensor(props) {
+  return (
+    <VisibilitySensor {...props}>
+      <style.Root />
+    </VisibilitySensor>
+  );
+}
 
 export default VisibilitySensor;

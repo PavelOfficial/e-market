@@ -11,7 +11,7 @@ const popupMap = {
   [POPUP_TYPE.BUYING_SUCCEED]: BuyingSucceedConnect,
 };
 
-export const PopupContainer = () => {
+export function PopupContainer() {
   const [popup, setPopup] = useState({});
 
   useEffect(() => {
@@ -33,6 +33,6 @@ export const PopupContainer = () => {
       />
     </style.Root>
   );
-};
+}
 
 export default PopupContainer;

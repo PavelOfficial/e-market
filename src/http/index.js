@@ -1,3 +1,5 @@
+// It's a mock you know.
+
 import { articles } from './data/articles';
 import { cart } from './data/cart';
 

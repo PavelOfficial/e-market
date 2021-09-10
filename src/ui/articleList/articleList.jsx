@@ -8,36 +8,40 @@ import {
   useVisibilityChange,
 } from '../../components/lineVisibilitySensor/lineVisibilitySensor';
 
-const Content = ({ articles }) => {
-  const component = articles.map((item) => (
+function Content({ articles }) {
+  const result = articles.map((item) => (
     <ArticleConnect
       key={item.id}
       article={item}
     />
   ));
 
-  return component;
+  return result;
+}
+
+Content.propTypes = {
+  articles: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
-const Loader = (props) => {
-  if (props.show) {
-    return (
-      <style.LoaderBox>
-        <style.Loader>
-          Loading. Please wait.
-        </style.Loader>
-      </style.LoaderBox>
-    );
+function Loader(props) {
+  if (!props.show) {
+    return null;
   }
 
-  return null;
-};
+  return (
+    <style.LoaderBox>
+      <style.Loader>
+        Loading. Please wait.
+      </style.Loader>
+    </style.LoaderBox>
+  );
+}
 
 Loader.propTypes = {
   show: PropTypes.bool.isRequired,
 };
 
-const ArticleList = (props) => {
+function ArticleList(props) {
   const {
     pending,
     activeSensor,
@@ -66,7 +70,7 @@ const ArticleList = (props) => {
       />
     </style.Root>
   );
-};
+}
 
 ArticleList.propTypes = {
   articles: PropTypes.arrayOf(PropTypes.object).isRequired,
