@@ -1,4 +1,4 @@
-const actionType = 'UPDATE_CHAT';
+const actionType = 'UPDATE_CART';
 
 const reducer = (state, action) => {
   state = { ...state };

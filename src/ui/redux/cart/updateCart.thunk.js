@@ -1,7 +1,7 @@
 import { http } from '../../../http';
 import { updateCart } from './updateCart';
 
-export class UpdateChatThunk {
+export class UpdateCartThunk {
 
   constructor(dispatch, id, value) {
     this.dispatch = dispatch;
@@ -17,4 +17,4 @@ export class UpdateChatThunk {
 
 }
 
-export default UpdateChatThunk;
+export default UpdateCartThunk;
