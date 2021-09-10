@@ -54,11 +54,6 @@ export const http = {
     return Promise.resolve();
   },
   post(path) {
-    if (path === '/purchase') {
-      return delay(serverLatency)
-        .then(() => ({ succeed: true }));
-    }
-
     if (path === '/buying/create') {
       Object.keys(cart).forEach((id) => {
         delete cart[id];
