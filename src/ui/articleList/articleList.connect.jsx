@@ -12,8 +12,6 @@ const mapStateToProps = (state) => {
   }
 
   return {
-    pending: ArticlesThunk.pending,
-    process: ArticlesThunk.process,
     isLastPage: state.articles.isLastPage,
     articles: articleList,
     cartExists: Object.keys(state.cart).length,

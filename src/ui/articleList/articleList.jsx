@@ -3,10 +3,8 @@ import PropTypes from 'prop-types';
 
 import { style } from './articleList.style';
 import { ArticleConnect } from './article.connect';
-import {
-  LineVisibilitySensor,
-  useVisibilityChange,
-} from '../../components/lineVisibilitySensor/lineVisibilitySensor';
+import { useScrollLoading } from './useScrollLoading';
+import { ArticlesThunk } from '../redux/articles/articles.thunk';
 
 function Content({ articles }) {
   const result = articles.map((item) => (
@@ -42,31 +40,26 @@ Loader.propTypes = {
 };
 
 function ArticleList(props) {
-  const {
-    pending,
-    activeSensor,
-    onVisibleChange,
-  } = useVisibilityChange({
-    content: props.articles,
-    onLoadPage: props.onLoadPage,
-    isLastPage: props.isLastPage,
-    propsPending: props.pending,
-    process: props.process,
-  });
+  const handleNewLoad = () => {
+    const isAbleToLoad = !ArticlesThunk.pending && !props.isLastPage;
+
+    if (isAbleToLoad) {
+      props.onLoadPage();
+    }
+  };
+
+  const { ref } = useScrollLoading(handleNewLoad, 50);
 
   return (
     <style.Root
+      ref={ref}
       cartExists={props.cartExists}
     >
       <Content
         articles={props.articles}
       />
       <Loader
-        show={pending && !props.isLastPage}
-      />
-      <LineVisibilitySensor
-        active={activeSensor}
-        onChange={onVisibleChange}
+        show={props.pending && !props.isLastPage}
       />
     </style.Root>
   );
@@ -77,7 +70,6 @@ ArticleList.propTypes = {
   pending: PropTypes.bool.isRequired,
   isLastPage: PropTypes.bool.isRequired,
   onLoadPage: PropTypes.func.isRequired,
-  process: PropTypes.object.isRequired,
   cartExists: PropTypes.bool.isRequired,
 };
 
