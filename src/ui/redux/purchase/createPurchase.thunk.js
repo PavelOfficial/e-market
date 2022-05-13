@@ -1,9 +1,8 @@
-import { http } from '../../../http';
-
 import { clearArticles } from '../articles/clearArticles';
 import { clearCart } from '../cart/clearCart';
 
 import { POPUP_TYPE, popupManager } from '../../popup/popupManager';
+import { axios } from '../../../axios';
 
 export class CreatePurchaseThunk {
 
@@ -14,13 +13,13 @@ export class CreatePurchaseThunk {
   }
 
   async invoke() {
-    const response = await http.post('/purchase/create', this.cart);
+    const response = await axios.post('/purchase/create', { data: this.cart });
 
-    if (response.succeed) {
+    if (response.data.succeed) {
       this.dispatch(clearArticles.createAction());
       this.dispatch(clearCart.createAction());
 
-      popupManager.emitPopup(POPUP_TYPE.BUYING_SUCCEED, { order: response.order });
+      popupManager.emitPopup(POPUP_TYPE.BUYING_SUCCEED, { order: response.data.order });
     }
   }
 

@@ -1,0 +1,1 @@
+import './axios/mock-adapter';

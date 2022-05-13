@@ -1,4 +1,5 @@
-import { http } from '../../../http';
+import { axios } from '../../../axios';
+
 import { updateCart } from './updateCart';
 
 export class UpdateCartThunk {
@@ -10,7 +11,11 @@ export class UpdateCartThunk {
   }
 
   async invoke() {
-    http.put('/cart', { id: this.id, value: this.value });
+    if (this.value) {
+      axios.put('/cart', { id: this.id, value: this.value });
+    } else {
+      axios.delete('/cart', { data: { id: this.id } });
+    }
 
     this.dispatch(updateCart.createAction(this.id, this.value));
   }

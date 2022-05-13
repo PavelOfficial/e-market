@@ -1,4 +1,5 @@
-import { http } from '../../../http';
+import { axios } from '../../../axios';
+
 import { POPUP_TYPE, popupManager } from '../../popup/popupManager';
 
 class CancelPurchaseThunk {
@@ -9,9 +10,9 @@ class CancelPurchaseThunk {
   }
 
   async invoke() {
-    const response = await http.post('/purchase/cancel', { order: this.order });
+    const response = await axios.post('/purchase/cancel', { order: this.order });
 
-    if (response.succeed) {
+    if (response.data.succeed) {
       popupManager.emitPopup(POPUP_TYPE.ORDER_CANCELED, { order: this.order });
     }
   }

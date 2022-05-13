@@ -30,7 +30,7 @@ function Article({ article, count, onChangeCount }) {
             const value = +event.target.value;
 
             if (value >= 0) {
-              onChangeCount(+event.target.value);
+              onChangeCount(value);
             }
           }}
         />

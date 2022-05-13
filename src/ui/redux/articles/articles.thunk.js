@@ -1,7 +1,6 @@
-import { http } from '../../../http';
-
 import { addArticles } from './addArticles';
 import { clearArticles } from './clearArticles';
+import { axios } from '../../../axios';
 
 export class ArticlesThunk {
 
@@ -37,9 +36,9 @@ export class ArticlesThunk {
 
   async callHttp() {
     try {
-      await http.get('/articles', this.options)
+      await axios.get('/articles', { data: this.options })
         .then(this.checkLastProcess)
-        .then(({ articles, isLastPage }) => {
+        .then(({ data: { articles, isLastPage } }) => {
           ArticlesThunk.pending = false;
           this.dispatch(addArticles.createAction(articles, isLastPage, this.options));
         });

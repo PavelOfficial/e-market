@@ -31,6 +31,8 @@ module.exports = {
 
     'import/no-extraneous-dependencies': ['error', {devDependencies: true}],
     'import/no-cycle': ['off', {maxDepth: '∞'}],
+    'import/prefer-default-export': 'off',
+    'arrow-body-style': 'off',
 
     'react/jsx-no-bind': ['off', {ignoreRefs: true}],
     'react/jsx-props-no-spreading': ['off'],
